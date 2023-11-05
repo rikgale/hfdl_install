@@ -1,6 +1,7 @@
 # hfdl_install
 Instructions for installing soapysdr (with RSP1a) and dumphdfl. Written for debian based systems. Tested on Raspberry Pi OS and Ubuntu.
 **Do not** plug in your SDR until instructed by the instructions below. (Incomplete at this time)
+Credit to Alex KD6VPH for putting this together.
 
 1) Ensure system is fully up-to-date.
 ```shell

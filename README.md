@@ -2,7 +2,6 @@
 Instructions for installing soapysdr and dumphdfl. Written for debian based systems. Tested on Raspberry Pi OS and Ubuntu
 
 1) Ensure system is fully up-to-date
-
 ```shell
 sudo apt update && sudo apt upgrade -y
 ```
@@ -26,4 +25,23 @@ cmake ../
 make
 sudo make install
 sudo ldconfig
+```
+
+4) Install SDRPlay API (x64 systems - **not Raspberry Pi/ARM based systems** - see below)
+```shell
+#Install SDRPlay API
+wget https://www.sdrplay.com/software/SDRplay_RSP_API-Linux-3.07.1.run
+#Change permission so the run file is executable
+chmod 755 ./SDRplay_RSP_API-Linux-3.07.1.run
+#Execute the API installer (follow the prompts)
+./SDRplay_RSP_API-Linux-3.07.1.run
+```
+For Raspberry Pi and other ARM based systems
+```shell
+#Install SDRPlay API
+wget https://www.sdrplay.com/software/SDRplay_RSP_API-ARM64-3.07.1.run
+#Change permission so the run file is executable
+chmod 755 ./SDRplay_RSP_API-ARM64-3.07.1.run
+#Execute the API installer (follow the prompts)
+./SDRplay_RSP_API-ARM64-3.07.1.run
 ```

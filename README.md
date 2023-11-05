@@ -36,7 +36,7 @@ chmod 755 ./SDRplay_RSP_API-Linux-3.07.1.run
 #Execute the API installer (follow the prompts)
 ./SDRplay_RSP_API-Linux-3.07.1.run
 ```
-For Raspberry Pi and other ARM based systems
+  For Raspberry Pi and other ARM based systems
 ```shell
 #Install SDRPlay API
 wget https://www.sdrplay.com/software/SDRplay_RSP_API-ARM64-3.07.1.run

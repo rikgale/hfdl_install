@@ -63,7 +63,7 @@ make
 sudo make install
 sudo ldconfig
 ```
-6) Install SoapySDR SDRPlay.
+6) Install Soapy SDR plugin for SDRPlay.
 ```shell
 cd
 cd ~/Dev

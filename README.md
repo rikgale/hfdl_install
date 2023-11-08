@@ -3,17 +3,17 @@ Instructions for installing soapysdr (with RSP1a - RTL and Airspy to be added la
 **Do not** plug in your SDR until instructed by the instructions below. (Incomplete at this time)
 Credit to Alex KD6VPH for putting this together.
 
-1) Ensure system is fully up-to-date.
+### 1) Ensure system is fully up-to-date.
 ```shell
 sudo apt update && sudo apt upgrade -y
 ```
 
-2) Install dumpHFDL dependancies.
+### 2) Install dumpHFDL dependancies.
 ```shell
 sudo apt install build-essential cmake pkg-config libglib2.0-dev libconfig++-dev libliquid-dev libfftw3-dev git
 ```
 
-3) Install libcars.
+### 3) Install libcars.
 ```shell
 sudo apt-get install zlib1g-dev
 sudo apt-get install libxml2-dev
@@ -29,7 +29,7 @@ sudo make install
 sudo ldconfig
 ```
 
-4) Install SDRPlay API  (x64 systems - **not Raspberry Pi/ARM based systems** - see below).
+### 4) Install SDRPlay API  (x64 systems - **not Raspberry Pi/ARM based systems** - see below).
 ```shell
 cd
 #Install SDRPlay API
@@ -49,7 +49,7 @@ chmod 755 ./SDRplay_RSP_API-ARM64-3.07.1.run
 #Execute the API installer (follow the prompts)
 ./SDRplay_RSP_API-ARM64-3.07.1.run
 ```
-5) Install SoapySDR.
+### 5) Install SoapySDR.
 ```shell
 mkdir ~/Dev
 cd ~/Dev
@@ -62,10 +62,10 @@ cmake ..
 make
 sudo make install
 sudo ldconfig
-```
-6) Install Soapy SDR plugin for SDRPlay.
-```shell
 cd
+```
+### 6) Install Soapy SDR plugin for SDRPlay.
+```shell
 cd ~/Dev
 sudo rm -rf SoapySDRPlay
 git clone https://github.com/pothosware/SoapySDRPlay.git
@@ -78,7 +78,7 @@ sudo ldconfig
 cd
 ```
 
-7) Plug in the RSP1a to the computer / Pi, then check the radio is picked up by the computer.
+### 7) Plug in the RSP1a to the computer / Pi, then check the radio is picked up by the computer.
 ```
 SoapySDRUtil -info
 ```
@@ -86,7 +86,7 @@ then
 ```
 SoapySDRUtil --probe=driver=sdrplay
 ```
-8) Install optional stats and messaging tools for HFDL.
+### 8) Install optional stats and messaging tools for HFDL.
 ```shell
 #Install libsqlite3
 sudo apt install libsqlite3-dev
@@ -106,7 +106,7 @@ cd
 sudo apt install libzmq3-dev
 ```
 
-9) Install dumpHFDL
+### 9) Install dumpHFDL
 ```shell
 cd
 git clone https://github.com/szpajder/dumphfdl.git

@@ -17,6 +17,7 @@ sudo apt install build-essential cmake pkg-config libglib2.0-dev libconfig++-dev
 ```shell
 sudo apt-get install zlib1g-dev
 sudo apt-get install libxml2-dev
+sudo apt-get install libjansson-dev
 wget https://github.com/szpajder/libacars/archive/refs/tags/v2.2.0.zip
 sudo apt install unzip
 unzip v2.2.0.zip

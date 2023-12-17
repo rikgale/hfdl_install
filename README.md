@@ -90,6 +90,9 @@ or for RTL-SDR
 SoapySDRUtil --probe="driver=rtlsdr"
 ```
 
+Trouble shooting see the relevant SoapySDR wiki page
+[SDRPlay](https://github.com/pothosware/SoapySDRPlay3/wiki)/[RTL-SDR](https://github.com/pothosware/SoapyRTLSDR/wiki)
+
 ### 7) Install libcars.
 ```shell
 sudo apt-get install zlib1g-dev

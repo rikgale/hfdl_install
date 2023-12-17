@@ -1,5 +1,5 @@
 # hfdl_install
-Instructions for installing soapysdr (with RSP1a - RTL and Airspy to be added later) and dumphdfl. Written for debian based systems. Tested on Raspberry Pi OS and Ubuntu.
+Instructions for installing soapysdr (with RSP1a + RTL. Airspy to be added later) and dumphdfl. Written for debian based systems. Tested on Raspberry Pi OS and Ubuntu.
 **Do not** plug in your SDR until instructed by the instructions below. (Incomplete at this time)
 Credit to Alex KD6VPH for putting this together.
 
@@ -8,29 +8,12 @@ Credit to Alex KD6VPH for putting this together.
 sudo apt update && sudo apt upgrade -y
 ```
 
-### 2) Install dumpHFDL dependancies.
+### 2) Install dumpHFDL and other related (RTL-SDR) dependancies.
 ```shell
-sudo apt install build-essential cmake pkg-config libglib2.0-dev libconfig++-dev libliquid-dev libfftw3-dev git
+sudo apt install build-essential cmake pkg-config libglib2.0-dev libconfig++-dev libliquid-dev libfftw3-dev rtl-sdr librtlsdr-dev git
 ```
 
-### 3) Install libcars.
-```shell
-sudo apt-get install zlib1g-dev
-sudo apt-get install libxml2-dev
-sudo apt-get install libjansson-dev
-wget https://github.com/szpajder/libacars/archive/refs/tags/v2.2.0.zip
-sudo apt install unzip
-unzip v2.2.0.zip
-cd libacars-2.2.0
-mkdir build
-cd build
-cmake ../
-make
-sudo make install
-sudo ldconfig
-```
-
-### 4) Install SDRPlay API  (x64 systems - **not Raspberry Pi/ARM based systems** - see below).
+### 3) Install SDRPlay API  (x64 systems - **not Raspberry Pi/ARM based systems** - see below).
 ```shell
 cd
 #Install SDRPlay API
@@ -50,7 +33,7 @@ chmod 755 ./SDRplay_RSP_API-ARM64-3.07.1.run
 #Execute the API installer (follow the prompts)
 ./SDRplay_RSP_API-ARM64-3.07.1.run
 ```
-### 5) Install SoapySDR.
+### 4) Install SoapySDR.
 ```shell
 mkdir ~/Dev
 cd ~/Dev
@@ -65,7 +48,7 @@ sudo make install
 sudo ldconfig
 cd
 ```
-### 6) Install Soapy SDR plugin for SDRPlay.
+### 5a) Install Soapy SDR plugin for *SDRPlay*.
 ```shell
 cd ~/Dev
 sudo rm -rf SoapySDRPlay
@@ -79,14 +62,51 @@ sudo ldconfig
 cd
 ```
 
-### 7) Plug in the RSP1a to the computer / Pi, then check the radio is picked up by the computer.
+### 5b) Install Soapy SDR plugin for *RTL-SDR*.
+```shell
+cd ~/Dev
+sudo rm -rf SoapyRTLSDR
+git clone https://github.com/pothosware/SoapyRTLSDR.git
+cd SoapyRTLSDR
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+sudo ldconfig
+cd
+```
+
+### 6) Plug in the RSP1a to the computer / Pi, then check the radio is picked up by the computer.
 ```
 SoapySDRUtil -info
 ```
-then
+then for RSP1a
 ```
 SoapySDRUtil --probe=driver=sdrplay
 ```
+or for RTL-SDR
+```
+SoapySDRUtil --probe="driver=rtlsdr"
+```
+
+### 7) Install libcars.
+```shell
+sudo apt-get install zlib1g-dev
+sudo apt-get install libxml2-dev
+sudo apt-get install libjansson-dev
+wget https://github.com/szpajder/libacars/archive/refs/tags/v2.2.0.zip
+sudo apt install unzip
+unzip v2.2.0.zip
+cd libacars-2.2.0
+mkdir build
+cd build
+cmake ../
+make
+sudo make install
+sudo ldconfig
+```
+
 ### 8) Install optional stats and messaging tools for HFDL.
 ```shell
 #Install libsqlite3

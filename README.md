@@ -24,14 +24,15 @@ chmod 755 ./SDRplay_RSP_API-Linux-3.07.1.run
 ./SDRplay_RSP_API-Linux-3.07.1.run
 ```
   For Raspberry Pi and other ARM based systems (Bookworm - to accept the licence agreement scroll to the end and push q, this should bring up the prompt to accept the agreement)
+ 
 ```shell
 cd
 #Install SDRPlay API
-wget https://www.sdrplay.com/software/SDRplay_RSP_API-ARM64-3.07.1.run
+wget https://www.sdrplay.com/software/SDRplay_RSP_API-Linux-3.14.0.run
 #Change permission so the run file is executable
-chmod 755 ./SDRplay_RSP_API-ARM64-3.07.1.run
+chmod 755 ./SDRplay_RSP_API-Linux-3.14.0.run
 #Execute the API installer (follow the prompts)
-./SDRplay_RSP_API-ARM64-3.07.1.run
+./SDRplay_RSP_API-Linux-3.14.0.run
 ```
 ### 4) Install SoapySDR.
 ```shell

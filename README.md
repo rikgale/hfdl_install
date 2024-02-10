@@ -13,18 +13,8 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install build-essential cmake pkg-config libglib2.0-dev libconfig++-dev libliquid-dev libfftw3-dev rtl-sdr librtlsdr-dev git
 ```
 
-### 3) Install SDRPlay API  (x64 systems - **not Raspberry Pi/ARM based systems** - see below).
-```shell
-cd
-#Install SDRPlay API
-wget https://www.sdrplay.com/software/SDRplay_RSP_API-Linux-3.07.1.run
-#Change permission so the run file is executable
-chmod 755 ./SDRplay_RSP_API-Linux-3.07.1.run
-#Execute the API installer (follow the prompts)
-./SDRplay_RSP_API-Linux-3.07.1.run
-```
-  For Raspberry Pi and other ARM based systems (Bookworm - to accept the licence agreement scroll to the end and push q, this should bring up the prompt to accept the agreement)
- 
+### 3) Install SDRPlay API 
+
 ```shell
 cd
 #Install SDRPlay API

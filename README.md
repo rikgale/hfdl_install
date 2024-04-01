@@ -271,22 +271,22 @@ EOF
 
 sudo nano /etc/default/dumphfdl1
 #Copy this into the file
-DUMPHFDL_OPTIONS="--soapysdr driver=sdrplay,serial=2239001699 --freq-as-squawk --sample-rate 2000000 5451 5463 5502 5508 5514 5523 5529 5538 5541 5544 5547 5583 5589 5622 5652 5655 5720 6529 6532 6535 6559 6565 6589 6596 6619 6628 6646 6652 6661 6712 --output decoded:basestation:tcp:address=192.168.1.155,port=44441
+DUMPHFDL_OPTIONS="--soapysdr driver=sdrplay,serial=xxxxxxxxxx --freq-as-squawk --sample-rate 2000000 5451 5463 5502 5508 5514 5523 5529 5538 5541 5544 5547 5583 5589 5622 5652 5655 5720 6529 6532 6535 6559 6565 6589 6596 6619 6628 6646 6652 6661 6712 --output decoded:basestation:tcp:address=192.168.1.155,port=44441
 
 
 sudo nano /etc/default/dumphfdl2
 #Copy this into the file
-DUMPHFDL_OPTIONS="--soapysdr driver=sdrplay,serial=2239001799 --freq-as-squawk --sample-rate 2000000 8825 8831 8834 8843 8885 8886 8894 8912 8921 8927 8936 8939 8942 8948 8957 8977 10027 10060 10063 10066 10075 10081 10084 10087 10093 --output decoded:basestation:tcp:address=192.168.1.155,port=44442
+DUMPHFDL_OPTIONS="--soapysdr driver=sdrplay,serial=xxxxxxxxxx --freq-as-squawk --sample-rate 2000000 8825 8831 8834 8843 8885 8886 8894 8912 8921 8927 8936 8939 8942 8948 8957 8977 10027 10060 10063 10066 10075 10081 10084 10087 10093 --output decoded:basestation:tcp:address=192.168.1.155,port=44442
 
 
 sudo nano /etc/default/dumphfdl3
 #Copy this into the file
-DUMPHFDL_OPTIONS="--soapysdr driver=sdrplay,serial=2239002799 --freq-as-squawk --sample-rate 6000000 11184 11288 11306 11312 11315 11318 11321 11327 11348 11354 11384 11387 13264 13270 13276 13303 13312 13315 13321 13324 13342 13351 13354 15025 --output decoded:basestation:tcp:address=192.168.1.155,port=44443
+DUMPHFDL_OPTIONS="--soapysdr driver=sdrplay,serial=xxxxxxxxxx --freq-as-squawk --sample-rate 6000000 11184 11288 11306 11312 11315 11318 11321 11327 11348 11354 11384 11387 13264 13270 13276 13303 13312 13315 13321 13324 13342 13351 13354 15025 --output decoded:basestation:tcp:address=192.168.1.155,port=44443
 
 
 sudo nano /etc/default/dumphfdl4
 #Copy this into the file
-DUMPHFDL_OPTIONS="--soapysdr driver=sdrplay,serial=2239002A99 --freq-as-squawk --sample-rate 6000000 17901 17912 17916 17919 17922 17928 17934 17952 17958 17967 17985 21928 21931 21934 21937 21940 21946 21949 21955 21973 21982 21988 21990 21997 --output decoded:basestation:tcp:address=192.168.1.155,port=44444
+DUMPHFDL_OPTIONS="--soapysdr driver=sdrplay,serial=xxxxxxxxxx --freq-as-squawk --sample-rate 6000000 17901 17912 17916 17919 17922 17928 17934 17952 17958 17967 17985 21928 21931 21934 21937 21940 21946 21949 21955 21973 21982 21988 21990 21997 --output decoded:basestation:tcp:address=192.168.1.155,port=44444
 
 
 

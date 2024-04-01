@@ -99,6 +99,7 @@ cmake ../
 make
 sudo make install
 sudo ldconfig
+cd
 ```
 
 ### 8) Install optional stats and messaging tools for HFDL.

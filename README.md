@@ -8,9 +8,31 @@ Credit to Alex KD6VPH for putting the initial iteration together.
 sudo apt update && sudo apt upgrade -y
 ```
 
-### 2) Install dumpHFDL and other related (RTL-SDR) dependancies.
+### 2a) Install dumpHFDL dependancies.
 ```shell
-sudo apt install build-essential cmake pkg-config libglib2.0-dev libconfig++-dev libliquid-dev libfftw3-dev rtl-sdr librtlsdr-dev git
+sudo apt install build-essential cmake pkg-config libglib2.0-dev libconfig++-dev libliquid-dev libfftw3-dev git
+```
+
+### 2b) Install RTL-SDR dependancies 
+Do not update drivers from OS package manager
+```shell
+# purge any old rtlsdr drivers
+sudo apt purge ^librtlsdr
+sudo rm -rvf /usr/lib/librtlsdr* /usr/include/rtl-sdr* /usr/local/lib/librtlsdr* /usr/local/include/rtl-sdr* /usr/local/include/rtl_* /usr/local/bin/rtl_*
+
+# download and build new rtlsdr drivers
+sudo apt install libusb-1.0-0-dev git cmake pkg-config
+git clone https://github.com/rtlsdrblog/rtl-sdr-blog
+cd rtl-sdr-blog/
+mkdir build
+cd build
+cmake ../ -DINSTALL_UDEV_RULES=ON
+make
+sudo make install
+sudo cp ../rtl-sdr.rules /etc/udev/rules.d/
+sudo ldconfig
+echo 'blacklist dvb_usb_rtl28xxu' | sudo tee --append /etc/modprobe.d/blacklist-dvb_usb_rtl28xxu.conf
+cd
 ```
 
 ### 3) Install SDRPlay API 

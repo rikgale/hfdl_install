@@ -93,7 +93,7 @@ sudo ldconfig
 cd
 ```
 
-### 6) Plug in the RSP1a/RTL-SDR to the computer / Pi, then check the radio is picked up by the computer.
+### 6) Plug in the RSP1(A/B)/RTL-SDR to the computer / Pi, then check the radio is picked up by the computer.
 ```
 SoapySDRUtil -info
 ```

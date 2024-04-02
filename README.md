@@ -157,114 +157,139 @@ sudo make install
 cd
 ```
 
-### Other stuff to sort and organise
+### 10) Launch dumpHFDL on startup
+Go to the dumphfdl build directory and install to /usr/local/bin
 
-```#Launch dumpHFDL on startup: go to the dumphfdl build directory and install to /usr/local/bin
-
+```shell
 cd dumphfdl/build
 sudo make install
 cd ..
 sudo cp etc/dumphfdl.service /etc/systemd/system/
 sudo cp etc/dumphfdl /etc/default
+```
 
+You will need to create 4 total dumphfdl.service files - one for each SDR you are running (assuming you are running 4 SDR's) with a different set of dumphfdl frequencies.
 
+Copy the contents of dumphfdl.service (example below)
+```bash
+[Unit]
+Description=HFDL decoder
+Documentation=https://github.com/szpajder/dumphfdl/blob/master/README.md
+Wants=network.target
+After=network.target
 
-#You will need to create 4 total dumphfdl.service files- one for each SDR you are running (assuming you are running 4 SDR's) with a different set of dumphfdl frequencies. 
-#In each of the dumphfdl.service files copy the original service file contents by using winSCP to open the original "dumphfdl.service" and copy its contents.
-#Once copied use Putty to open each service file listed below and paste the copied contents from the original "dumphfdl.service" file in the previous step into the files listed below. 
-#Edit the copied contents to match the service name of each dumphfdl.service; i.e. dumphfdl1.service, dumphfdl2.service, etc... 
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/dumphfdl
+# If you don't want to run the program as root, then uncomment
+# the following line and put a desired user name in it.
+# Note that the user must have access to the SDR device.
+# User=pi
+ExecStart=/usr/local/bin/dumphfdl $DUMPHFDL_OPTIONS
+Restart=on-failure
 
+[Install]
+WantedBy=multi-user.target
+
+```
+
+into 4 seperate dumphfdl.service files 
+
+```shell
 sudo nano /etc/systemd/system/dumphfdl1.service
 sudo nano /etc/systemd/system/dumphfdl2.service
 sudo nano /etc/systemd/system/dumphfdl3.service
 sudo nano /etc/systemd/system/dumphfdl4.service
+```
 
+Change the line `EnvironmentFile=/etc/default/dumphfdl` to match the service number. For example for dumphfdl2.service this would change to `EnvironmentFile=/etc/default/dumphfdl2` 
+Save and exit the file. 
+Do for each of the created service files.
 
-
-#We then need to delete the original dumphfdl.service file 
+Delete the original dumphfdl.service file 
+```bash
 cd /etc/systemd/system/
 #Then
 sudo rm dumphfdl.service
+```
 
+Setup timer service files to start each dumphfdl service file in sequence; 15 seconds apart on boot, after 30 seconds so that each SDR is loaded in sequence to avoid connection errors with VRS/tar1090.
+Create and add the following to each timer service file, make sure to modify the service name for each dumphfdl service; i.e. dumphfdl1.service, dumphfdl2.service, etc... 
 
+#### Timer 1 
+`sudo nano /etc/systemd/system/dumphfdl1.timer`
 
-#We then need to setup timer service files to start each dumphfdl service file in sequence; 15 seconds apart on boot, so that each SDR is loaded in sequence to avoid connection errors with VRS.
-#Create and add the following to each timer service file, make sure to modify the service name for each dumphfdl service; i.e. dumphfdl1.service, dumphfdl2.service, etc... 
+Then copy and paste the text below into the file and save
 
-
-
-#dumphfdl1
-sudo nano /etc/systemd/system/dumphfdl1.timer
-
-#Then copy and paste the text below into the file and save
-
+```bash
 [Unit]
 Description=Timer for dumphfdl1 service
 
 [Timer]
 Unit=dumphfdl1.service
-OnBootSec=15sec
-
-[Install]
-WantedBy=timers.target
-EOF
-
-
-
-#dumphfdl2
-sudo nano /etc/systemd/system/dumphfdl2.timer
-
-#Then copy and paste the text below into the file and save
-
-[Unit]
-Description=Timer for dumphfdl2 service
-
-[Timer]
-Unit=dumphfdl2.service
 OnBootSec=30sec
 
 [Install]
 WantedBy=timers.target
 EOF
+```
 
+#### Timer 2 
+`sudo nano /etc/systemd/system/dumphfdl2.timer`
 
+Then copy and paste the text below into the file and save
 
-#dumphfdl3
-sudo nano /etc/systemd/system/dumphfdl3.timer
-
-#Then copy and paste the text below into the file and save
-
+```bash
 [Unit]
-Description=Timer for dumphfdl3 service
+Description=Timer for dumphfdl2 service
 
 [Timer]
-Unit=dumphfdl3.service
+Unit=dumphfdl2.service
 OnBootSec=45sec
 
 [Install]
 WantedBy=timers.target
 EOF
+```
 
+#### Timer 3 
+`sudo nano /etc/systemd/system/dumphfdl3.timer`
 
+Then copy and paste the text below into the file and save
 
-#dumphfdl4
-sudo nano /etc/systemd/system/dumphfdl4.timer
-
-#Then copy and paste the text below into the file and save
-
+```bash
 [Unit]
-Description=Timer for dumphfdl4 service
+Description=Timer for dumphfdl3 service
 
 [Timer]
-Unit=dumphfdl1.service
+Unit=dumphfdl3.service
 OnBootSec=60sec
 
 [Install]
 WantedBy=timers.target
 EOF
+```
 
+#### Timer 4 
+`sudo nano /etc/systemd/system/dumphfdl4.timer`
 
+Then copy and paste the text below into the file and save
 
+```bash
+[Unit]
+Description=Timer for dumphfdl4 service
+
+[Timer]
+Unit=dumphfdl1.service
+OnBootSec=75sec
+
+[Install]
+WantedBy=timers.target
+EOF
+```
+
+WORK IN PROGRESS BELOW HERE
+```
 #Edit /etc/default and uncomment the DUMPHFDL_OPTIONS= line and put your preferred dumphfdl options there.
 #You need to copy each dumphfdl config file and rename it- each file should have different frequencies, different serial numbers (the one that matches the SDR you are using), and the IP address of the computer running VRS.
 

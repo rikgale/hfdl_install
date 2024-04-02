@@ -423,7 +423,7 @@ Debug as required.
 
 ### 11) Notes
 
-1) When sending SBS3/Basestation messages to an `IP:port` make sure that `IP:port` is active.
+1) When sending SBS3/Basestation messages to an `IP:port` make sure that `IP:port` is active before starting updumpHFDL otherwise the output will fail. If it was the only output specified dumpHFDL will shutdown.
 2) If using an RTL-SDR replace `driver=sdrplay` with `driver=rtlsdr`
 3) Sample rates for RTL-SDR are stable up to 2560000, but can go up to 3200000 - Y.M.M.V.
 4) DumpHFDL won't work with Airspy devices apart from the speicific ones for HF or ones with a down converter.

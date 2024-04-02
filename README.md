@@ -214,6 +214,7 @@ Delete the original dumphfdl.service file
 cd /etc/systemd/system/
 #Then
 sudo rm dumphfdl.service
+cd
 ```
 
 Setup timer service files to start each dumphfdl service file in sequence; 15 seconds apart on boot, after 30 seconds so that each SDR is loaded in sequence to avoid connection errors with VRS/tar1090.

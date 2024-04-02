@@ -1,4 +1,4 @@
-# hfdl_install
+# dumpHFDL Install
 Instructions for installing soapysdr with RSP1(A/B) + RTL (Airspy support to be added later - for use with soapysdr only) and dumphdfl. Written for debian based systems. Tested on Raspberry Pi OS and Ubuntu.
 
 **READ all** instrctions from top to bottom before starting
@@ -97,7 +97,7 @@ cd
 ```
 SoapySDRUtil -info
 ```
-then for RSP1a
+then for RSP1(A/B)
 ```
 SoapySDRUtil --probe=driver=sdrplay
 ```

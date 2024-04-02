@@ -217,7 +217,9 @@ Setup timer service files to start each dumphfdl service file in sequence; 15 se
 Create and add the following to each timer service file, make sure to modify the service name for each dumphfdl service; i.e. dumphfdl1.service, dumphfdl2.service, etc... 
 
 #### Timer 1 
-```sudo nano /etc/systemd/system/dumphfdl1.timer```
+```bash
+sudo nano /etc/systemd/system/dumphfdl1.timer
+```
 
 Then copy and paste the text below into the file and save
 
@@ -235,7 +237,9 @@ EOF
 ```
 
 #### Timer 2 
-```sudo nano /etc/systemd/system/dumphfdl2.timer```
+```bash
+sudo nano /etc/systemd/system/dumphfdl2.timer
+```
 
 Then copy and paste the text below into the file and save
 
@@ -253,7 +257,9 @@ EOF
 ```
 
 #### Timer 3 
-```sudo nano /etc/systemd/system/dumphfdl3.timer```
+```bash
+sudo nano /etc/systemd/system/dumphfdl3.timer
+```
 
 Then copy and paste the text below into the file and save
 
@@ -271,7 +277,9 @@ EOF
 ```
 
 #### Timer 4 
-```sudo nano /etc/systemd/system/dumphfdl4.timer```
+```bash
+sudo nano /etc/systemd/system/dumphfdl4.timer
+```
 
 Then copy and paste the text below into the file and save
 

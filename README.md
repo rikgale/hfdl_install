@@ -114,10 +114,10 @@ Trouble shooting see the relevant SoapySDR wiki page
 sudo apt-get install zlib1g-dev
 sudo apt-get install libxml2-dev
 sudo apt-get install libjansson-dev
-wget https://github.com/szpajder/libacars/archive/refs/tags/v2.2.0.zip
+wget https://github.com/szpajder/libacars/archive/refs/tags/v2.2.1.zip
 sudo apt install unzip
-unzip v2.2.0.zip
-cd libacars-2.2.0
+unzip v2.2.1.zip
+cd libacars-2.2.1
 mkdir build
 cd build
 cmake ../

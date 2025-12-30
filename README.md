@@ -43,7 +43,7 @@ cd
 ```shell
 cd
 #Install SDRPlay API
-wget https://www.sdrplay.com/software/SDRplay_RSP_API-Linux-3.14.0.run
+wget https://www.sdrplay.com/software/SDRplay_RSP_API-Linux-3.15.2.run
 #Change permission so the run file is executable
 chmod 755 ./SDRplay_RSP_API-Linux-3.14.0.run
 #Execute the API installer (follow the prompts)
@@ -59,10 +59,10 @@ cd SoapySDR
 mkdir build
 cd build
 cmake ..
-make
-sudo make install
-sudo ldconfig
-cd
+make -j`nproc`
+sudo make install -j`nproc`
+sudo ldconfig #needed on debian systems
+SoapySDRUtil --info
 ```
 ### 5a) Install Soapy SDR plugin for *SDRPlay*.
 ```shell

@@ -45,9 +45,9 @@ cd
 #Install SDRPlay API
 wget https://www.sdrplay.com/software/SDRplay_RSP_API-Linux-3.15.2.run
 #Change permission so the run file is executable
-chmod 755 ./SDRplay_RSP_API-Linux-3.14.0.run
+chmod 755 ./SDRplay_RSP_API-Linux-3.15.2.run
 #Execute the API installer (follow the prompts)
-./SDRplay_RSP_API-Linux-3.14.0.run
+./SDRplay_RSP_API-Linux-3.15.2.run
 ```
 ### 4) Install SoapySDR.
 ```shell

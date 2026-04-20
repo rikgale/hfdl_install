@@ -190,6 +190,12 @@ EnvironmentFile=/etc/default/dumphfdl
 # User=pi
 ExecStart=/usr/local/bin/dumphfdl $DUMPHFDL_OPTIONS
 Restart=on-failure
+RestartSec=20
+TimeoutStopSec=30
+KillSignal=SIGTERM
+KillMode=process
+StartLimitIntervalSec=300
+StartLimitBurst=3
 
 [Install]
 WantedBy=multi-user.target

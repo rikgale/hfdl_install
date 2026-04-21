@@ -181,7 +181,7 @@ Documentation=https://github.com/szpajder/dumphfdl/blob/master/README.md
 Wants=network.target
 After=network.target
 StartLimitIntervalSec=300
-StartLimitBurst=3
+StartLimitBurst=6
 
 [Service]
 Type=simple
@@ -192,7 +192,7 @@ EnvironmentFile=/etc/default/dumphfdl
 # User=pi
 ExecStart=/usr/local/bin/dumphfdl $DUMPHFDL_OPTIONS
 Restart=on-failure
-RestartSec=20
+RestartSec=30
 TimeoutStopSec=30
 KillSignal=SIGTERM
 KillMode=process

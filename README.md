@@ -260,7 +260,7 @@ Description=Timer for dumphfdl2 service
 
 [Timer]
 Unit=dumphfdl2.service
-OnBootSec=45sec
+OnBootSec=60sec
 
 [Install]
 WantedBy=timers.target
@@ -280,7 +280,7 @@ Description=Timer for dumphfdl3 service
 
 [Timer]
 Unit=dumphfdl3.service
-OnBootSec=60sec
+OnBootSec=90sec
 
 [Install]
 WantedBy=timers.target
@@ -300,7 +300,7 @@ Description=Timer for dumphfdl4 service
 
 [Timer]
 Unit=dumphfdl1.service
-OnBootSec=75sec
+OnBootSec=120sec
 
 [Install]
 WantedBy=timers.target

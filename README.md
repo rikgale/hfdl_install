@@ -180,6 +180,8 @@ Description=HFDL decoder
 Documentation=https://github.com/szpajder/dumphfdl/blob/master/README.md
 Wants=network.target
 After=network.target
+StartLimitIntervalSec=300
+StartLimitBurst=3
 
 [Service]
 Type=simple
@@ -194,8 +196,7 @@ RestartSec=20
 TimeoutStopSec=30
 KillSignal=SIGTERM
 KillMode=process
-StartLimitIntervalSec=300
-StartLimitBurst=3
+Nice=5
 
 [Install]
 WantedBy=multi-user.target

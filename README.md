@@ -428,3 +428,82 @@ Debug as required.
 2) If using an RTL-SDR replace `driver=sdrplay` with `driver=rtlsdr`
 3) Sample rates for RTL-SDR are stable up to 2560000, but can go up to 3200000 - Y.M.M.V.
 4) DumpHFDL won't work with Airspy devices apart from the speicific ones for HF or ones with a down converter.
+
+### 12) Uptime Kuma
+
+Setting up a Push Monitor in Uptime Kuma can help spot problems with wedging SDRPlay Devices
+
+Create script - change service number as required in all sections below
+```
+sudo nano /usr/local/bin/dumphfdl1-healthcheck.sh
+```
+
+```
+#!/bin/bash
+
+# CHANGE URL to your Uptime Kuma URL
+PUSH_URL="https://status.example.com/api/push/XXXXXXXX"
+
+# Service must be running AND not in known fatal error state
+if systemctl is-active --quiet dumphfdl1 &&
+   ! journalctl -u dumphfdl1 -n 20 --no-pager \
+     | grep -Ei 'not_supported|device is unavailable' >/dev/null
+then
+    curl -fsS "$PUSH_URL" >/dev/null
+fi
+```
+
+```
+sudo chmod +x /usr/local/bin/dumphfdl1-healthcheck.sh
+```
+
+Create systemd service
+```
+sudo nano /etc/systemd/system/dumphfdl1-healthcheck.service
+```
+
+```
+[Unit]
+Description=Health check for dumphfdl1 (Uptime Kuma push)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/dumphfdl1-healthcheck.sh
+```
+
+Create the timer
+```
+sudo nano /etc/systemd/system/dumphfdl1-healthcheck.timer
+```
+
+```
+[Unit]
+Description=Run dumphfdl1 health check every minute
+
+[Timer]
+OnBootSec=60
+OnUnitActiveSec=60
+AccuracySec=5
+
+[Install]
+WantedBy=timers.target
+```
+
+Enable and start timer
+```
+sudo systemctl daemon-reload
+sudo systemctl enable --now dumphfdl1-healthcheck.timer
+```
+
+Check it runs
+```
+systemctl list-timers | grep dumphfdl1
+```
+
+Configure Uptime Kuma Push
+
+Monitor Type: Push
+Heartbeat interval: 120 s (gives reboot grace)
+Retries: 2
+Retries interval: 30 s
+

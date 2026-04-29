@@ -444,6 +444,9 @@ sudo nano /usr/local/bin/dumphfdl1-healthcheck.sh
 # CHANGE URL to your Uptime Kuma URL
 PUSH_URL="https://status.example.com/api/push/XXXXXXXX"
 
+# NOTE:
+# OVERFLOW is a recoverable SoapySDR condition and must NOT mark the service unhealthy.
+# We only treat NOT_SUPPORTED / Device is unavailable as fatal wedge states.
 # Service must be running AND not in known fatal error state
 if systemctl is-active --quiet dumphfdl1 &&
    ! journalctl -u dumphfdl1 -n 20 --no-pager \
